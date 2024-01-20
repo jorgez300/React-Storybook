@@ -1,7 +1,9 @@
-import { Button, Card, Collapse } from "react-bootstrap";
+import { Card, Collapse, ListGroup } from "react-bootstrap";
 import { useState } from "react";
 import IconoMal from '../../Images/icons8-eliminar-escudo-80.png';
 import IconoOk from '../../Images/icons8-seguridad-comprobado-80.png';
+import { CommonButton, CommonButtonProps } from "../buttons/commonButtons";
+
 
 
 export interface DataCardProps {
@@ -19,19 +21,30 @@ export const DataCard = (props: DataCardProps) => {
     const icono = () => {
         if (props.Estado) {
             return (
-                <img src={IconoOk} alt="Logo" />
+                <Card.Img variant="top" style={{ width: 'fit-content', padding: '10px' }} src={IconoOk} />
             );
         }
         else {
             return (
-                <img src={IconoMal} alt="Logo" />
+                <Card.Img variant="top" style={{ width: 'fit-content', padding: '10px' }} src={IconoMal} />
             );
         }
     }
 
     const formatData = () => {
         if (props.Data) {
-            return props.Data.map((item: string) => <tr><td>{item}</td></tr>);
+            if (props.Data.length > 0) {
+                return <Collapse in={open}>
+                    <ListGroup className="list-group-flush">
+                        {props.Data.map((item: string) => <ListGroup.Item>{item}</ListGroup.Item>)}
+                    </ListGroup>
+                </Collapse>;
+            }
+            else {
+                return (
+                    <></>
+                );
+            }
         }
         else {
             return (
@@ -40,40 +53,43 @@ export const DataCard = (props: DataCardProps) => {
         }
     }
 
-
+    const DetalleBotonPropiedades: CommonButtonProps = {
+        Texto: "Detalle",
+        Habilitado: !props.Estado,
+        Propiedades: {
+            onClick: () => {
+                setOpen(!open);
+            },
+            variant: 'success',
+            'aria-controls': "example-collapse-text",
+            'aria-expanded': open,
+            className: ((props.Estado) ? " d-none" : "")
+        }
+    }
 
     return (
-        <Card>
+        <Card style={{
+            width: '18rem', padding: '10px'
+        }}>
+            {icono()}
             <Card.Body>
-                <h1>{props.Texto}</h1>
-
-                {icono()}
-                <span>
-                    <Button
-                        className={(props.Data) ? "" : "d-none"}
-                        variant="primary"
-
-                        onClick={() => setOpen(!open)}
-                        aria-controls="example-collapse-text"
-                        aria-expanded={open}
-                    >
-                        Detalle error
-                    </Button>
-
-                </span>
-
-                <Collapse in={open}>
+                <Card.Title>{(props.Estado) ? "Ok" : "Error"}</Card.Title>
+                <Card.Text>
                     <div>
-                        <table >
-                            <tbody>
-                                {formatData()}
-                            </tbody>
-                        </table>
+                        <p>
+                            {props.Texto}
+                        </p>
                     </div>
+                    <span>
 
-                </Collapse>
+                        <CommonButton {...DetalleBotonPropiedades} />
+
+                    </span>
+                </Card.Text>
             </Card.Body>
-        </Card>
+            {formatData()}
+
+        </Card >
     );
 
 };

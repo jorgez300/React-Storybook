@@ -13,21 +13,21 @@ type Story = StoryObj<typeof DataCard>;
 
 export const EstadoOk: Story = {
     args: {
-        Texto: "texto de ok",
+        Texto: "Formato OK sin datos a mostrar",
         Estado: true
     },
 };
 
 export const EstadoMal: Story = {
     args: {
-        Texto: "texto de mal",
+        Texto: "Formato de error sin datos a mostrar",
         Estado: false
     },
 };
 
 export const EjemploData: Story = {
     args: {
-        Texto: "texto de mal",
+        Texto: "Formato de error con pocos datos a mostrar",
         Estado: false,
         Data: ["Error 1","Error 2","Error 3"]
     },
@@ -35,7 +35,7 @@ export const EjemploData: Story = {
 
 export const EjemploDataLargo: Story = {
     args: {
-        Texto: "texto de mal",
+        Texto: "Formato de error con muchos datos a mostrar",
         Estado: false,
         Data: ["Error 1","Error 2","Error 3","Error 2","Error 3","Error 2","Error 3","Error 2","Error 3","Error 2","Error 3","Error 2","Error 3","Error 2","Error 3","Error 2","Error 3"]
     },

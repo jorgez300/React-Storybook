@@ -1,20 +1,20 @@
-import { Button } from "react-bootstrap";
+import { Button, ButtonProps } from "react-bootstrap";
 
-export interface ButtonProps {
+export interface CommonButtonProps {
     Texto: string;
-    Habilitado : boolean;
-    onClick?: () => void;
+    Habilitado: boolean;
+    onClick: () => void;
+    Propiedades?: ButtonProps;
 }
 
 
-export const CommonButton = (props: ButtonProps) => {
+export const CommonButton = (props: CommonButtonProps) => {
 
     return (
         <Button
-            className=""
-            variant={(props.Habilitado) ? "success" : "primary"}
-            disabled= {props.Habilitado}
+            disabled={!props.Habilitado}
             onClick={props.onClick}
+            {...props.Propiedades}
         >
             {props.Texto}
         </Button>

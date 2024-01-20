@@ -4,7 +4,7 @@ import { CommonButton } from './commonButtons';
 
 const meta: Meta<typeof CommonButton> = {
     component: CommonButton,
-    argTypes: { onClick: { action: 'clicked' } },
+    argTypes: {onClick: { action: 'clicked' }},
 };
 
 export default meta;
@@ -15,8 +15,7 @@ export const Primary: Story = {
         Texto: "Boton de prueba",
         Habilitado: true,
         onClick: () => {
-            alert("Click en el boton")
+            console.log("Click en el boton");
         }
     },
 };
-
