@@ -21,7 +21,8 @@ export const EstadoOk: Story = {
 export const EstadoMal: Story = {
     args: {
         Texto: "Formato de error sin datos a mostrar",
-        Estado: false
+        Estado: false,
+        Data: []
     },
 };
 

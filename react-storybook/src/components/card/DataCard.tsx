@@ -56,14 +56,14 @@ export const DataCard = (props: DataCardProps) => {
     const DetalleBotonPropiedades: CommonButtonProps = {
         Texto: "Detalle",
         Habilitado: !props.Estado,
+        onClick: () => {
+            setOpen(!open);
+        },
         Propiedades: {
-            onClick: () => {
-                setOpen(!open);
-            },
             variant: 'success',
             'aria-controls': "example-collapse-text",
             'aria-expanded': open,
-            className: ((props.Estado) ? " d-none" : "")
+            className: ((props.Estado || props.Data.length == 0) ? " d-none" : "")
         }
     }
 

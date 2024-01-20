@@ -3,8 +3,8 @@ import { Button, ButtonProps } from "react-bootstrap";
 export interface CommonButtonProps {
     Texto: string;
     Habilitado: boolean;
-    onClick: () => void;
-    Propiedades?: ButtonProps;
+    onClick?: () => void;
+    Propiedades?: any;
 }
 
 
