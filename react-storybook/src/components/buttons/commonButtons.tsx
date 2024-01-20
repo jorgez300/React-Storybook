@@ -4,7 +4,7 @@ export interface CommonButtonProps {
     Texto: string;
     Habilitado: boolean;
     onClick?: () => void;
-    Propiedades?: any;
+    Propiedades?: ButtonProps;
 }
 
 

@@ -6,6 +6,7 @@ import { barChart } from './barChart';
 
 const meta: Meta<typeof barChart> = {
     component: barChart,
+    tags: ['autodocs'],
 };
 
 export default meta;

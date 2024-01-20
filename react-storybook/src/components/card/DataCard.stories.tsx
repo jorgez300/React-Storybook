@@ -6,6 +6,7 @@ import { DataCard } from './DataCard';
 
 const meta: Meta<typeof DataCard> = {
     component: DataCard,
+    tags: ['autodocs'],
 };
 
 export default meta;
